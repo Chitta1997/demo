@@ -85,7 +85,7 @@ public class TestController {
 
     @GetMapping("/mydetailsQ")
     public ResponseEntity<Customer> myDetailsReq(@RequestParam("id") int roll) {
-        return new ResponseEntity<>(new Customer("aaaa", roll), HttpStatus.OK);
+        return new ResponseEntity<>(new Customer("abcd", roll), HttpStatus.OK);
     }
     @GetMapping("/mydetailsQ1")
     public ResponseEntity<Customer> myDetailsREq(@RequestParam int id){
