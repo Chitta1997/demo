@@ -1,8 +1,9 @@
-package com.example.demo;
+package com.example.demo.model;
 
 public class Customer {
     String name;
     int id;
+
 
     public Customer(String name, int id) {
         this.name = name;
