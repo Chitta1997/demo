@@ -1,6 +1,6 @@
-package com.example.demo;
+package com.example.demo.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import com.example.demo.model.Customer;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -40,14 +40,14 @@ public class TestController {
     }
 
     @GetMapping("/id")
-    public int getdetails2() {
-        return new Customer("abcdw", 895456).id;
+    public String getdetails2() {
+        return new Customer("abcdw", 895456).getName();
 
     }
 
     @GetMapping("/name")
-    public String getdetails3() {
-        return new Customer("abcdw", 895456).name;
+    public int getdetails3() {
+        return new Customer("abcdw", 895456).getId();
 
     }
 
@@ -85,7 +85,7 @@ public class TestController {
 
     @GetMapping("/mydetailsQ")
     public ResponseEntity<Customer> myDetailsReq(@RequestParam("id") int roll) {
-        return new ResponseEntity<>(new Customer("aaaa", roll), HttpStatus.OK);
+        return new ResponseEntity<>(new Customer("abcd", roll), HttpStatus.OK);
     }
     @GetMapping("/mydetailsQ1")
     public ResponseEntity<Customer> myDetailsREq(@RequestParam int id){
