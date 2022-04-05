@@ -4,6 +4,8 @@ import com.example.demo.exceptions.CityNotFoundException;
 import com.example.demo.model.City;
 import com.example.demo.repository.CityRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -27,18 +29,23 @@ public class CityService {
     }
 
     public City getCityByCode(int code) {
-       Optional<City> optionalCity = cityRepo.findById(code);
-        if(!optionalCity.isPresent()){
+        Optional<City> optionalCity = cityRepo.findById(code);
+        if (!optionalCity.isPresent()) {
             throw new CityNotFoundException("City not found");
         }
         return cityRepo.findById(code).get();
     }
 
-    public City saveOrUpdate(City city) {
-        return cityRepo.save(city);
+    public ResponseEntity<String> saveOrUpdate(City city) {
+        if(city.getCityName()== null ||city.getCityName().isEmpty()){
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("enter city name");
+        }
+        cityRepo.save(city);
+        return ResponseEntity.status(HttpStatus.ACCEPTED).body("Request accepted");
     }
 
     public void delete(int code) {
+
         cityRepo.deleteById(code);
     }
 

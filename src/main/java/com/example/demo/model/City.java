@@ -18,6 +18,12 @@ public class City {
     @Column(name = "pin")
     private int pin;
 
+    public City(int city_code, String cityName, int pin) {
+        this.city_code = city_code;
+        this.cityName = cityName;
+        this.pin = pin;
+    }
+
     public int getCity_code() {
         return city_code;
     }

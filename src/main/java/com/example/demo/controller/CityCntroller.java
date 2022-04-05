@@ -40,8 +40,8 @@ public class CityCntroller {
     }
 
     @PostMapping("/city")
-    public String saveCity(@RequestBody City city) {
-        return cityService.saveOrUpdate(city).getCityName() + " City saved successfully";
+    public ResponseEntity<String> saveCity(@RequestBody City city) {
+        return cityService.saveOrUpdate(city);
 
     }
 
